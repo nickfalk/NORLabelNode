@@ -1,17 +1,9 @@
-//
-//  NORLabelNode.m
-//  TotalGreed
-//
-//  Created by Benjamin Larsen on 14.03.14.
-//  Copyright (c) 2014 Benjamin Larsen. All rights reserved.
-//
-
 #import "NORLabelNode.h"
 
 
 @interface NORLabelNode ()
 @property (nonatomic, strong) NSArray *subNodes;
-@property (nonatomic, strong) SKLabelNode *controllerNode; // never used for anything but reference
+@property (nonatomic, strong) SKLabelNode *propertyStateholderNode; 
 @end
 
 
@@ -27,15 +19,15 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	self    = [super initWithFontNamed:fontName];
 	if (self) {
 		[self updateControllerNode];
-		self.controllerNode.fontName    = self.fontName;
+		self.propertyStateholderNode.fontName    = self.fontName;
 	}
 	return self;
 }
 
 
 - (void)updateControllerNode{
-	if (!self.controllerNode) {
-		self.controllerNode    = [SKLabelNode node];
+	if (!self.propertyStateholderNode) {
+		self.propertyStateholderNode    = [SKLabelNode node];
 	}
 }
 
@@ -66,7 +58,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setText:(NSString *)text{
 	[self updateControllerNode];
-	self.controllerNode.text    = text;
+	self.propertyStateholderNode.text    = text;
 	self.subNodes    = [self labelNodesFromText:text];
 	[self removeAllChildren];
 	for (SKLabelNode *childNode in self.subNodes) {
@@ -80,7 +72,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	[super setPosition:position];
 	_position    = position;
 	[self updateControllerNode];
-	self.controllerNode.position    = position;
+	self.propertyStateholderNode.position    = position;
 	[self repositionSubNodesBasedOnParentPosition:position];
 }
 
@@ -88,7 +80,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setHorizontalAlignmentMode:(SKLabelHorizontalAlignmentMode)horizontalAlignmentMode{
 	[super setHorizontalAlignmentMode:horizontalAlignmentMode];
 	[self updateControllerNode];
-	self.controllerNode.horizontalAlignmentMode    = horizontalAlignmentMode;
+	self.propertyStateholderNode.horizontalAlignmentMode    = horizontalAlignmentMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.horizontalAlignmentMode    = horizontalAlignmentMode;
 	}
@@ -98,7 +90,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setVerticalAlignmentMode:(SKLabelVerticalAlignmentMode)verticalAlignmentMode{
 	[super setVerticalAlignmentMode:verticalAlignmentMode];
 	[self updateControllerNode];
-	self.controllerNode.verticalAlignmentMode    = verticalAlignmentMode;
+	self.propertyStateholderNode.verticalAlignmentMode    = verticalAlignmentMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.verticalAlignmentMode    = verticalAlignmentMode;
 	}
@@ -108,7 +100,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setFontSize:(CGFloat)fontSize{
 	[super setFontSize:fontSize];
 	[self updateControllerNode];
-	self.controllerNode.fontSize    = fontSize;
+	self.propertyStateholderNode.fontSize    = fontSize;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontSize    = fontSize;
 	}
@@ -119,7 +111,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setFontName:(NSString *)fontName{
 	[super setFontName:fontName];
 	[self updateControllerNode];
-	self.controllerNode.fontName    = fontName;
+	self.propertyStateholderNode.fontName    = fontName;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontName    = fontName;
 	}
@@ -130,7 +122,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setFontColor:(UIColor *)fontColor{
 	[super setFontColor: fontColor];
 	[self updateControllerNode];
-	self.controllerNode.fontColor    = fontColor;
+	self.propertyStateholderNode.fontColor    = fontColor;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontColor    = fontColor;
 	}
@@ -163,7 +155,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 			widestNode    = childNode;
 		}
 	}
-	CGRect frame    = self.controllerNode.frame;
+	CGRect frame    = self.propertyStateholderNode.frame;
 	frame.size.width    = largestWidth;
 	SKLabelNode *topNode    = [self.subNodes firstObject];
 	CGFloat top    = CGRectGetMaxY(topNode.frame);
@@ -187,20 +179,20 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 
 - (NSArray *)textLines{
-	NSArray *textLines    = [self.controllerNode.text componentsSeparatedByString:@"\n"];
+	NSArray *textLines    = [self.propertyStateholderNode.text componentsSeparatedByString:@"\n"];
 	return textLines;
 }
 
 
 - (NSString *)text{
-	return self.controllerNode.text;
+	return self.propertyStateholderNode.text;
 }
 
 #pragma mark - description
 
 - (NSString *)description{
 	NSString *positionString    = [NSString stringWithFormat:@"%@", NSStringFromCGPoint(self.position)];
-	NSString *descriptionString    = [NSString stringWithFormat:@"<%@> name:'%@' text:'%@' fontName:'%@' position:%@", [self class], self.name, self.controllerNode.text, self.fontName, positionString];
+	NSString *descriptionString    = [NSString stringWithFormat:@"<%@> name:'%@' text:'%@' fontName:'%@' position:%@", [self class], self.name, self.propertyStateholderNode.text, self.fontName, positionString];
 	return descriptionString;
 }
 

@@ -11,7 +11,7 @@
 
 @interface NORLabelNode ()
 @property (nonatomic, strong) NSArray *subNodes;
-@property (nonatomic, strong) SKLabelNode *controllerNode;
+@property (nonatomic, strong) SKLabelNode *propertyStateholderNode;
 - (NSArray *)labelNodesFromText:(NSString *)text;
 
 @end
