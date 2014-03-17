@@ -7,7 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-/** A subclass of SKLabelNode adding multiline functionality through using the regular "\n" nextline character. */
+/** A subclass of SKLabelNode adding multiline functionality by using the regular \"\\n\" nextline character in the text-string. */
 @interface NORLabelNode : SKLabelNode
 
 /// The nubmer of text-lines in the node.
