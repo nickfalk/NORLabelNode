@@ -9,7 +9,7 @@ Language: Objective-C
 Requirements: SpriteKit
 
  This software is created by T. Benjamin Larsen and can be included as a part of any software-project free of charge.
- No credits are required, but extensions made to this class should aknowledge its origin in some form. The
+ No credits are required, but extensions made to this class should aknowledge its origin in some form.
  
  The software is provided by T. Benjamin Larsen on an "AS IS" basis. NO WARRANTIES, ARE EXPRESSED OR IMPLIED,
  INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A 
