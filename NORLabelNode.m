@@ -178,12 +178,6 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 }
 
 
-- (NSArray *)textLines{
-	NSArray *textLines    = [self.propertyStateholderNode.text componentsSeparatedByString:@"\n"];
-	return textLines;
-}
-
-
 - (NSString *)text{
 	return self.propertyStateholderNode.text;
 }

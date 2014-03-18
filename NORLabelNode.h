@@ -18,7 +18,5 @@
 
 /// The nubmer of text-lines in the node.
 @property (nonatomic, readonly, assign) NSUInteger numberOfLines;
-/// The strings for all the different text-lines in the node.
-@property (nonatomic, readonly, strong) NSArray *textLines;
 
 @end
