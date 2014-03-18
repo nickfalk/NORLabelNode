@@ -146,7 +146,6 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 #pragma mark - frame
 
 - (CGRect)frame{
-	
 	SKLabelNode *widestNode    = nil;
 	CGFloat largestWidth    = 0;
 	for (SKLabelNode *childNode in self.subNodes) {
