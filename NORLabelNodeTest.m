@@ -29,8 +29,8 @@
 
 - (void)testInitWithFontCreatesTheAppropriateControllerNode{
 	NORLabelNode *labelNode    = [NORLabelNode labelNodeWithFontNamed:@"Avenir"];
-	XCTAssertEqual(labelNode.fontName, labelNode.controllerNode.fontName, @"The controllerNode should have the same fontName as the node itself");
-	XCTAssertNotNil(labelNode.controllerNode, @"The node should have a controllerNode after initWithFontName");
+	XCTAssertEqual(labelNode.fontName, labelNode.propertyStateholderNode.fontName, @"The controllerNode should have the same fontName as the node itself");
+	XCTAssertNotNil(labelNode.propertyStateholderNode, @"The node should have a controllerNode after initWithFontName");
 }
 
 

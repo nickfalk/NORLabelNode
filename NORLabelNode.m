@@ -18,14 +18,14 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (instancetype)initWithFontNamed:(NSString *)fontName{
 	self    = [super initWithFontNamed:fontName];
 	if (self) {
-		[self updateControllerNode];
+		[self updateStateholderNode];
 		self.propertyStateholderNode.fontName    = self.fontName;
 	}
 	return self;
 }
 
 
-- (void)updateControllerNode{
+- (void)updateStateholderNode{
 	if (!self.propertyStateholderNode) {
 		self.propertyStateholderNode    = [SKLabelNode node];
 	}
@@ -57,7 +57,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 #pragma mark setterOverriders
 
 - (void)setText:(NSString *)text{
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.text    = text;
 	self.subNodes    = [self labelNodesFromText:text];
 	[self removeAllChildren];
@@ -71,7 +71,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setPosition:(CGPoint)position{
 	[super setPosition:position];
 	_position    = position;
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.position    = position;
 	[self repositionSubNodesBasedOnParentPosition:position];
 }
@@ -79,7 +79,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setHorizontalAlignmentMode:(SKLabelHorizontalAlignmentMode)horizontalAlignmentMode{
 	[super setHorizontalAlignmentMode:horizontalAlignmentMode];
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.horizontalAlignmentMode    = horizontalAlignmentMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.horizontalAlignmentMode    = horizontalAlignmentMode;
@@ -89,7 +89,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setVerticalAlignmentMode:(SKLabelVerticalAlignmentMode)verticalAlignmentMode{
 	[super setVerticalAlignmentMode:verticalAlignmentMode];
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.verticalAlignmentMode    = verticalAlignmentMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.verticalAlignmentMode    = verticalAlignmentMode;
@@ -99,7 +99,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setFontSize:(CGFloat)fontSize{
 	[super setFontSize:fontSize];
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.fontSize    = fontSize;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontSize    = fontSize;
@@ -110,7 +110,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setFontName:(NSString *)fontName{
 	[super setFontName:fontName];
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.fontName    = fontName;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontName    = fontName;
@@ -121,7 +121,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setFontColor:(UIColor *)fontColor{
 	[super setFontColor: fontColor];
-	[self updateControllerNode];
+	[self updateStateholderNode];
 	self.propertyStateholderNode.fontColor    = fontColor;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontColor    = fontColor;
@@ -143,7 +143,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 }
 
 
-#pragma mark - controllerFrame
+#pragma mark - frame
 
 - (CGRect)frame{
 	
