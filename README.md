@@ -3,7 +3,7 @@ NORLabelNode
 
 Simple extension of Apple's SKLabelNode. Allowing multiple lines through the use of \n in the text-string. 
 Usage: Behaves like an ordinary SKLabelNode with the one difference that adding newline characters to the text-
-property actually adds line-breaks.
+property actually adds line-breaks. This is achieved by creating SKLabelNodes as child-nodes, but keeping these as part of the internal (private) logic.
 
 Language: Objective-C
 Requirements: SpriteKit
