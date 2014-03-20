@@ -15,13 +15,28 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 @synthesize fontColor    = _fontColor;
 
 
++ (NORLabelNode *)labelNodeWithFontNamed:(NSString *)fontName{
+    NORLabelNode *node = [[[self class] alloc] initWithFontNamed:fontName];
+    return node;
+}
+
+
 - (instancetype)initWithFontNamed:(NSString *)fontName{
 	self    = [super initWithFontNamed:fontName];
 	if (self) {
+        [self setDefaultValues];
 		[self updateStateholderNode];
 		self.propertyStateholderNode.fontName    = self.fontName;
 	}
 	return self;
+}
+
+
+- (void)setDefaultValues{
+    self.fontColor = [super fontColor];
+    self.position = [super position];
+    self.verticalAlignmentMode = [super verticalAlignmentMode];
+    self.horizontalAlignmentMode = [super horizontalAlignmentMode];
 }
 
 
