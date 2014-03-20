@@ -13,7 +13,9 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 @synthesize text    = _text;
 @synthesize position    = _position;
 @synthesize fontColor    = _fontColor;
-
+@synthesize color    = _color;
+@synthesize colorBlendFactor    = _colorBlendFactor;
+@synthesize blendMode    = _blendMode;
 
 + (NORLabelNode *)labelNodeWithFontNamed:(NSString *)fontName{
     NORLabelNode *node = [[[self class] alloc] initWithFontNamed:fontName];
@@ -37,6 +39,9 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
     self.position = [super position];
     self.verticalAlignmentMode = [super verticalAlignmentMode];
     self.horizontalAlignmentMode = [super horizontalAlignmentMode];
+	self.color    = [super color];
+	self.colorBlendFactor    = [super colorBlendFactor];
+	self.blendMode    = [super blendMode];
 }
 
 
@@ -61,6 +66,9 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 		labelNode.verticalAlignmentMode    = self.verticalAlignmentMode;
 		CGFloat y    = self.position.y - (labelNumber * self.fontSize * kLineSpaceMultiplier);
 		labelNode.position    = CGPointMake(self.position.x, y);
+		labelNode.color    = self.color;
+		labelNode.colorBlendFactor    = self.colorBlendFactor;
+		labelNode.blendMode    = self.blendMode;
 		labelNumber++;
 		[labelNodes addObject:labelNode];
 	}
@@ -145,6 +153,40 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	}
 	_fontColor    = fontColor;
 }
+
+
+- (void)setColor:(UIColor *)color{
+	[super setColor:color];
+	[self updateStateholderNode];
+	self.propertyStateholderNode.color = color;
+	for (SKLabelNode *subNode in self.subNodes) {
+		subNode.color    = color;
+	}
+	_color    = color;
+}
+
+
+- (void)setColorBlendFactor:(CGFloat)colorBlendFactor{
+	[super setColorBlendFactor:colorBlendFactor];
+	[self updateStateholderNode];
+	self.propertyStateholderNode.colorBlendFactor = colorBlendFactor;
+	for (SKLabelNode *subNode in self.subNodes) {
+		subNode.colorBlendFactor    = colorBlendFactor;
+	}
+	_colorBlendFactor    = colorBlendFactor;
+}
+
+
+- (void)setBlendMode:(SKBlendMode)blendMode{
+	[super setBlendMode:blendMode];
+	[self updateStateholderNode];
+	self.propertyStateholderNode.blendMode = blendMode;
+	for (SKLabelNode *subNode in self.subNodes) {
+		subNode.blendMode    = blendMode;
+	}
+	_blendMode    = blendMode;
+}
+
 
 
 #pragma mark -
