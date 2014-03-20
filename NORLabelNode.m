@@ -18,7 +18,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 @synthesize blendMode    = _blendMode;
 
 + (NORLabelNode *)labelNodeWithFontNamed:(NSString *)fontName{
-    NORLabelNode *node = [[[self class] alloc] initWithFontNamed:fontName];
+    NORLabelNode *node    = [[[self class] alloc] initWithFontNamed:fontName];
     return node;
 }
 
@@ -26,22 +26,10 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (instancetype)initWithFontNamed:(NSString *)fontName{
 	self    = [super initWithFontNamed:fontName];
 	if (self) {
-        [self setDefaultValues];
 		[self setupStateholderNode];
 		self.propertyStateholderNode.fontName    = self.fontName;
 	}
 	return self;
-}
-
-
-- (void)setDefaultValues{
-    self.fontColor = [super fontColor];
-    self.position = [super position];
-    self.verticalAlignmentMode = [super verticalAlignmentMode];
-    self.horizontalAlignmentMode = [super horizontalAlignmentMode];
-	self.color    = [super color];
-	self.colorBlendFactor    = [super colorBlendFactor];
-	self.blendMode    = [super blendMode];
 }
 
 
@@ -169,7 +157,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setBlendMode:(SKBlendMode)blendMode{
 	[super setBlendMode:blendMode];
-	self.propertyStateholderNode.blendMode = blendMode;
+	self.propertyStateholderNode.blendMode    = blendMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.blendMode    = blendMode;
 	}
