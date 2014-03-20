@@ -85,9 +85,16 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setPosition:(CGPoint)position{
 	[super setPosition:position];
+    self.propertyStateholderNode.position    = position;
+    
+    if (self.verticalAlignmentMode == SKLabelVerticalAlignmentModeCenter) {
+        position.y    -= position.y;
+    }
+    NSLog(@"position.y:%f",position.y);
+
 	_position    = position;
+
 	[self updateStateholderNode];
-	self.propertyStateholderNode.position    = position;
 	[self repositionSubNodesBasedOnParentPosition:position];
 }
 
@@ -194,6 +201,11 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (NSString *)text{
 	return self.propertyStateholderNode.text;
+}
+
+
+- (CGPoint)position{
+    return self.propertyStateholderNode.position;
 }
 
 #pragma mark - description
