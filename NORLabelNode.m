@@ -86,12 +86,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setPosition:(CGPoint)position{
 	[super setPosition:position];
     self.propertyStateholderNode.position    = position;
-    
-    if (self.verticalAlignmentMode == SKLabelVerticalAlignmentModeCenter) {
-        position.y    -= position.y;
-    }
-    NSLog(@"position.y:%f",position.y);
-
+	position.y    -= position.y;
 	_position    = position;
 
 	[self updateStateholderNode];
