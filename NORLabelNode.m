@@ -66,6 +66,14 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 }
 
 
+#pragma mark NSCopying
+
+- (instancetype)copyWithZone:(NSZone *)zone{
+	return nil;
+}
+
+
+
 #pragma mark setterOverriders
 
 - (void)setText:(NSString *)text{

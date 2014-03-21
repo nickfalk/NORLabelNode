@@ -50,7 +50,7 @@
 
 
 - (void)testThatTextMethodReturnsTheOriginalText{
-	NORLabelNode *labelNode    = [NORLabelNode node];
+	NORLabelNode *labelNode    = [NORLabelNode labelNodeWithFontNamed:@"Avenir"];
 	NSString *textString    = @"There was an old lady\nwho swallowed a fly\nI don't know why...";
 	labelNode.text    = textString;
 	XCTAssertEqualObjects(labelNode.text, textString, @"The text returned from the text method should be the same as the string passed into the property.");
