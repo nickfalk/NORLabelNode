@@ -28,6 +28,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	if (self) {
 		[self setupStateholderNode];
 		self.propertyStateholderNode.fontName    = self.fontName;
+		self.lineSpacing    = kLineSpaceMultiplier;
 	}
 	return self;
 }
@@ -52,7 +53,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 		labelNode.fontSize    = self.fontSize;
 		labelNode.horizontalAlignmentMode    = self.horizontalAlignmentMode;
 		labelNode.verticalAlignmentMode    = self.verticalAlignmentMode;
-		CGFloat y    = self.position.y - (labelNumber * self.fontSize * kLineSpaceMultiplier);
+		CGFloat y    = self.position.y - (labelNumber * self.fontSize * self.lineSpacing);
 		labelNode.position    = CGPointMake(self.position.x, y);
 		labelNode.color    = self.color;
 		labelNode.colorBlendFactor    = self.colorBlendFactor;
@@ -172,7 +173,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	NSUInteger subnodeNumber    = 0;
 	for (SKLabelNode *subNode in self.subNodes) {
 		CGFloat x    =  0;
-		CGFloat y    = position.y - (self.fontSize * kLineSpaceMultiplier * subnodeNumber);
+		CGFloat y    = position.y - (self.fontSize * self.lineSpacing * subnodeNumber);
 		subNode.position    = CGPointMake(x, y);
 		subnodeNumber++;
 	}

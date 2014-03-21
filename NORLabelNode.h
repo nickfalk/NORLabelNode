@@ -16,7 +16,9 @@
 /** A subclass of SKLabelNode adding multiline functionality by using the regular \"\\n\" nextline character in the text-string. */
 @interface NORLabelNode : SKLabelNode
 
-/// The nubmer of text-lines in the node.
+/// The number of text-lines in the node.
 @property (nonatomic, readonly, assign) NSUInteger numberOfLines;
+/// The float value controlling the space between lines. It works by multiplying the font's pointSize. The default value is 1.5.
+@property (nonatomic, assign) CGFloat lineSpacing;
 
 @end
