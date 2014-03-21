@@ -69,9 +69,26 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 #pragma mark NSCopying
 
 - (instancetype)copyWithZone:(NSZone *)zone{
-	return nil;
+	NORLabelNode *copy    = [[NORLabelNode alloc] initWithFontNamed:nil];
+	if (copy) {
+		copy.fontName    = [self.fontName copyWithZone:zone];
+		copy.fontColor    = [self.fontColor copyWithZone:zone];
+		copy.fontSize    = self.fontSize;
+		copy.text    = [self.text copyWithZone:zone];
+		copy.color   = [self.color copyWithZone:zone];
+		copy.colorBlendFactor    = self.colorBlendFactor;
+		copy.blendMode    = self.blendMode;
+		copy.horizontalAlignmentMode    = self.horizontalAlignmentMode;
+		copy.verticalAlignmentMode    = self.verticalAlignmentMode;
+		
+		copy.propertyStateholderNode    = [self.propertyStateholderNode copyWithZone:zone];
+		copy.subNodes    = [self.subNodes copyWithZone:zone];
+		for (SKLabelNode *labelNode in self.children) {
+			[copy addChild:[labelNode copyWithZone:zone]];
+		}
+	}
+	return copy;
 }
-
 
 
 #pragma mark setterOverriders
