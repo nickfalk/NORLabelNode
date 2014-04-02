@@ -27,7 +27,16 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	self    = [super initWithFontNamed:fontName];
 	if (self) {
 		[self setupStateholderNode];
-		self.propertyStateholderNode.fontName    = self.fontName;
+		self.lineSpacing    = kLineSpaceMultiplier;
+	}
+	return self;
+}
+
+
+- (instancetype)init{
+	self    = [super init];
+	if (self) {
+		[self setupStateholderNode];
 		self.lineSpacing    = kLineSpaceMultiplier;
 	}
 	return self;
@@ -37,6 +46,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setupStateholderNode{
 	if (!self.propertyStateholderNode) {
 		self.propertyStateholderNode    = [SKLabelNode node];
+		self.propertyStateholderNode.fontName    = self.fontName;
 	}
 }
 
@@ -106,9 +116,18 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setPosition:(CGPoint)position{
 	[super setPosition:position];
+//	CGFloat xChange    = position.x - self.propertyStateholderNode.position.x;
+//	CGFloat yChange    = self.propertyStateholderNode.position.y - position.y;
+	
     self.propertyStateholderNode.position    = position;
 	position.y    -= position.y;
 	_position    = position;
+	
+	NSInteger lastIndex    = [self.children count] - 1;
+	for (NSInteger index = 0; index < lastIndex; index++){
+		SKLabelNode *childLabel    = [self.children objectAtIndex:index];
+		childLabel.position    = CGPointMake(_position.x, _position.y - (index * self.fontSize * self.lineSpacing));
+	}
 	[self repositionSubNodesBasedOnParentPosition:position];
 }
 
