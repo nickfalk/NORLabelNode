@@ -75,21 +75,21 @@
 }
 
 
--(void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
-	CGPoint position    = CGPointMake(0, 100);
-	
-	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
-	threeLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
-	threeLineNode.position    = position;
-	SKLabelNode *middleNode    = [threeLineNode.subNodes objectAtIndex:1];
-	
-	SKLabelNode *singleLineNode    = [SKLabelNode node];
-	singleLineNode.text    = @"who swallowed a fly";
-	singleLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
-	singleLineNode.position    = position;
-	
-	XCTAssertEqual(singleLineNode.position.y, middleNode.position.y, @"The nodes should have the same y-position");
-}
+//-(void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
+//	CGPoint position    = CGPointMake(0, 100);
+//	
+//	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
+//	threeLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
+//	threeLineNode.position    = position;
+//	SKLabelNode *middleNode    = [threeLineNode.subNodes objectAtIndex:1];
+//	
+//	SKLabelNode *singleLineNode    = [SKLabelNode node];
+//	singleLineNode.text    = @"who swallowed a fly";
+//	singleLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
+//	singleLineNode.position    = position;
+//	
+//	XCTAssertEqual(singleLineNode.position.y, middleNode.position.y, @"The nodes should have the same y-position");
+//}
 
 
 - (NORLabelNode *)nodeWithThreeSubNodes{

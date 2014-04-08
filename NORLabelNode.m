@@ -228,7 +228,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 			break;
 		case SKLabelVerticalAlignmentModeCenter:{
 			CGFloat middleValue    = CGRectGetHeight(self.frame)/2;
-			middleValue    -= self.fontSize / ((2 + self.lineSpacing)/2);
+			middleValue    -= (self.fontSize / 1.75);
 			/*--------------------------------------------
 			 
 			 2 = for stor
