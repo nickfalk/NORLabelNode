@@ -215,9 +215,39 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)repositionSubNodesBasedOnParentPosition:(CGPoint)position {
 	NSUInteger subnodeNumber    = 0;
+	/*--------------------------------------------
+	 
+	 Need to reposition based on verticalAlignmentMode
+	 
+	 --------------------------------------------*/
+	CGFloat yAlignmentAdjustmentForCurrentAlignmentMode    = 0;
+	switch (self.verticalAlignmentMode) {
+		case SKLabelVerticalAlignmentModeBaseline:
+			break;
+		case SKLabelVerticalAlignmentModeBottom:
+			break;
+		case SKLabelVerticalAlignmentModeCenter:{
+			CGFloat middleValue    = CGRectGetHeight(self.frame)/2;
+			middleValue    -= self.fontSize / ((2 + self.lineSpacing)/2);
+			/*--------------------------------------------
+			 
+			 2 = for stor
+			 1.5 (linespacing) for liten
+			 
+			 --------------------------------------------*/
+			yAlignmentAdjustmentForCurrentAlignmentMode = middleValue;
+		}
+			break;
+		case SKLabelVerticalAlignmentModeTop:
+			break;
+		default:
+			break;
+	}
+	
+	
 	for (SKLabelNode *subNode in self.subNodes) {
 		CGFloat x    =  0;
-		CGFloat y    = position.y - (self.fontSize * self.lineSpacing * subnodeNumber);
+		CGFloat y    = position.y - (self.fontSize * self.lineSpacing * subnodeNumber) + yAlignmentAdjustmentForCurrentAlignmentMode;
 		subNode.position    = CGPointMake(x, y);
 		subnodeNumber++;
 	}
