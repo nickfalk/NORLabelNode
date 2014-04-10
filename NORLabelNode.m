@@ -44,10 +44,8 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 
 - (void)setupStateholderNode{
-	if (!self.propertyStateholderNode) {
-		self.propertyStateholderNode    = [SKLabelNode node];
-		self.propertyStateholderNode.fontName    = self.fontName;
-	}
+	self.propertyStateholderNode    = [SKLabelNode node];
+	self.propertyStateholderNode.fontName    = self.fontName;
 }
 
 
@@ -215,12 +213,22 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)repositionSubNodesBasedOnParentPosition:(CGPoint)position {
 	CGFloat lineSpacingAdjustment    = self.fontSize * self.lineSpacing;
-	CGFloat y    = position.y; // her kan vi justere...
+	CGFloat numberOfPositionsLabelsShouldMoveUp    = 0;
+	CGFloat y    = position.y;
 	
-	if (self.verticalAlignmentMode == SKLabelHorizontalAlignmentModeCenter) {
-		CGFloat numberOfPositionsLabelsShouldMoveUp    = 1; // for a three line vertically centered label
-		y    += numberOfPositionsLabelsShouldMoveUp * lineSpacingAdjustment;
+	switch (self.verticalAlignmentMode) {
+		case SKLabelVerticalAlignmentModeBaseline:
+		case SKLabelVerticalAlignmentModeCenter:
+			numberOfPositionsLabelsShouldMoveUp    = (self.numberOfLines - 1) / 2;
+			break;
+		case SKLabelVerticalAlignmentModeBottom:
+			numberOfPositionsLabelsShouldMoveUp    = self.numberOfLines - 1;
+			break;
+		case SKLabelVerticalAlignmentModeTop:
+		default:
+			break;
 	}
+	y    += numberOfPositionsLabelsShouldMoveUp * lineSpacingAdjustment;
 	
 	for (SKLabelNode *subNode in self.subNodes) {
 		CGFloat x    =  0;
