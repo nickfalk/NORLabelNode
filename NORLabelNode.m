@@ -207,13 +207,13 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)repositionSubNodesBasedOnParentPosition:(CGPoint)position {
 	CGFloat lineSpacingAdjustment    = self.fontSize * self.lineSpacing;
-	CGFloat numberOfPositionsLabelsShouldMoveUp    = 0;
-	CGFloat y    = 0;//position.y;
+	CGFloat numberOfPositionsLabelsShouldMoveUp    = 0.0f;
+	CGFloat y    = 0.0f;
 	
 	switch (self.verticalAlignmentMode) {
 		case SKLabelVerticalAlignmentModeBaseline:
 		case SKLabelVerticalAlignmentModeCenter:
-			numberOfPositionsLabelsShouldMoveUp    = (self.numberOfLines - 1) / 2;
+			numberOfPositionsLabelsShouldMoveUp    = (CGFloat)(self.numberOfLines - 1) / 2;
 			break;
 		case SKLabelVerticalAlignmentModeBottom:
 			numberOfPositionsLabelsShouldMoveUp    = self.numberOfLines - 1;
@@ -222,10 +222,11 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 		default:
 			break;
 	}
+	
 	y    += numberOfPositionsLabelsShouldMoveUp * lineSpacingAdjustment;
 	
 	for (SKLabelNode *subNode in self.subNodes) {
-		CGFloat x    =  0;
+		CGFloat x    = 0;
 		subNode.position    = CGPointMake(x, y);
 		y    -= lineSpacingAdjustment;
 	}
