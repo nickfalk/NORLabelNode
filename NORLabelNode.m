@@ -13,6 +13,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 @synthesize text    = _text;
 @synthesize position    = _position;
 @synthesize fontColor    = _fontColor;
+@synthesize fontSize    = _fontSize;
 @synthesize color    = _color;
 @synthesize colorBlendFactor    = _colorBlendFactor;
 @synthesize blendMode    = _blendMode;
@@ -114,18 +115,9 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 - (void)setPosition:(CGPoint)position{
 	[super setPosition:position];
-//	CGFloat xChange    = position.x - self.propertyStateholderNode.position.x;
-//	CGFloat yChange    = self.propertyStateholderNode.position.y - position.y;
-	
     self.propertyStateholderNode.position    = position;
 	position.y    -= position.y;
 	_position    = position;
-	
-	NSInteger lastIndex    = [self.children count] - 1;
-	for (NSInteger index = 0; index < lastIndex; index++){
-		SKLabelNode *childLabel    = [self.children objectAtIndex:index];
-		childLabel.position    = CGPointMake(_position.x, _position.y - (index * self.fontSize * self.lineSpacing));
-	}
 	[self repositionSubNodesBasedOnParentPosition:position];
 }
 
@@ -151,8 +143,10 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setFontSize:(CGFloat)fontSize{
 	[super setFontSize:fontSize];
 	self.propertyStateholderNode.fontSize    = fontSize;
+	_fontSize    = fontSize;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontSize    = fontSize;
+//		subNode.position    = self.position;
 	}
 	[self repositionSubNodesBasedOnParentPosition:self.position];
 }
@@ -214,7 +208,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)repositionSubNodesBasedOnParentPosition:(CGPoint)position {
 	CGFloat lineSpacingAdjustment    = self.fontSize * self.lineSpacing;
 	CGFloat numberOfPositionsLabelsShouldMoveUp    = 0;
-	CGFloat y    = position.y;
+	CGFloat y    = 0;//position.y;
 	
 	switch (self.verticalAlignmentMode) {
 		case SKLabelVerticalAlignmentModeBaseline:
