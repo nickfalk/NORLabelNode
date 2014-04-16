@@ -58,7 +58,11 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	for (NSString *substring in substrings) {
 		SKLabelNode *labelNode    = [SKLabelNode labelNodeWithFontNamed:self.fontName];
 		labelNode.text    = substring;
-		labelNode.fontColor    = self.fontColor;
+		SKColor *fontColor    = self.fontColor;
+		if (nil == self.fontColor) {
+			fontColor    = [SKColor whiteColor];
+		}
+		labelNode.fontColor    = fontColor;
 		labelNode.fontSize    = self.fontSize;
 		labelNode.horizontalAlignmentMode    = self.horizontalAlignmentMode;
 		labelNode.verticalAlignmentMode    = self.verticalAlignmentMode;
