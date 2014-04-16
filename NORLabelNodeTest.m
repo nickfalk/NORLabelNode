@@ -75,21 +75,26 @@
 }
 
 
-//-(void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
-//	CGPoint position    = CGPointMake(0, 100);
-//	
-//	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
-//	threeLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
-//	threeLineNode.position    = position;
-//	SKLabelNode *middleNode    = [threeLineNode.subNodes objectAtIndex:1];
-//	
-//	SKLabelNode *singleLineNode    = [SKLabelNode node];
-//	singleLineNode.text    = @"who swallowed a fly";
-//	singleLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
-//	singleLineNode.position    = position;
-//	
-//	XCTAssertEqual(singleLineNode.position.y, middleNode.position.y, @"The nodes should have the same y-position");
-//}
+-(void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
+	CGPoint position    = CGPointMake(0, 100);
+	SKScene *scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
+	
+	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
+	threeLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
+	threeLineNode.position    = position;
+	[scene addChild:threeLineNode];
+	
+	SKLabelNode *middleNode    = [threeLineNode.subNodes objectAtIndex:1];
+	CGPoint middleConvertedPosition    = [threeLineNode convertPoint:middleNode.position toNode:threeLineNode.parent];
+	
+	SKLabelNode *singleLineNode    = [SKLabelNode node];
+	singleLineNode.text    = @"who swallowed a fly";
+	singleLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
+	singleLineNode.position    = position;
+	[scene addChild:singleLineNode];
+	
+	XCTAssertEqual(singleLineNode.position.y, middleConvertedPosition.y, @"The nodes should have the same y-position");
+}
 
 
 - (NORLabelNode *)nodeWithThreeSubNodes{
