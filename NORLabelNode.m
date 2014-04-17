@@ -114,6 +114,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 		[self addChild:childNode];
 	}
 	_text    = @"";
+	[self repositionSubNodesBasedOnParentPosition:self.position];
 }
 
 
