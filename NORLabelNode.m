@@ -79,7 +79,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 }
 
 
-#pragma mark NSCopying
+#pragma mark - NSCopying
 
 - (instancetype)copyWithZone:(NSZone *)zone{
 	NORLabelNode *copy    = [[NORLabelNode alloc] initWithFontNamed:nil];
@@ -104,7 +104,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 }
 
 
-#pragma mark setterOverriders
+#pragma mark - setterOverriders
 
 - (void)setText:(NSString *)text{
 	self.propertyStateholderNode.text    = text;
@@ -266,7 +266,6 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	frame.size.height    = height;
 	return frame;
 }
-
 
 
 #pragma mark - property getters
