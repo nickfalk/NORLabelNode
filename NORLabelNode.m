@@ -132,7 +132,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	self.propertyStateholderNode.horizontalAlignmentMode    = horizontalAlignmentMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.horizontalAlignmentMode    = horizontalAlignmentMode;
-	}	
+	}
 }
 
 
@@ -207,6 +207,11 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	_blendMode    = blendMode;
 }
 
+
+- (void)setLineSpacing:(CGFloat)lineSpacing{
+	_lineSpacing    = lineSpacing;
+	[self repositionSubNodesBasedOnParentPosition:self.position];
+}
 
 
 #pragma mark - Repositioning subnodes
