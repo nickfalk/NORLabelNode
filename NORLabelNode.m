@@ -132,7 +132,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	self.propertyStateholderNode.horizontalAlignmentMode    = horizontalAlignmentMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.horizontalAlignmentMode    = horizontalAlignmentMode;
-	}
+	}	
 }
 
 
@@ -142,6 +142,8 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.verticalAlignmentMode    = verticalAlignmentMode;
 	}
+	
+	[self repositionSubNodesBasedOnParentPosition:self.position];
 }
 
 
