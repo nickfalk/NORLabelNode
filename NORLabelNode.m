@@ -150,7 +150,6 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	_fontSize    = fontSize;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontSize    = fontSize;
-//		subNode.position    = self.position;
 	}
 	[self repositionSubNodesBasedOnParentPosition:self.position];
 }
@@ -207,7 +206,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 
 
 
-#pragma mark -
+#pragma mark - Repositioning subnodes
 
 - (void)repositionSubNodesBasedOnParentPosition:(CGPoint)position {
 	CGFloat lineSpacingAdjustment    = self.fontSize * self.lineSpacing;
