@@ -77,11 +77,6 @@
 
 - (void)testThatChangingLineSpacingHasEffect{
 	SKScene *scene    = nil;
-#if TARGET_IOS_PHONE
-	scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
-#elif TARGET_MAC_OS
-	scene    = [SKScene sceneWithSize:CGSizeMake(1024, 768)]
-#endif
 	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
 	[scene addChild:threeLineNode];
 	SKLabelNode *lastNode    = [threeLineNode.subNodes lastObject];
@@ -100,8 +95,7 @@
 
 - (void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
 	CGPoint position    = CGPointMake(0, 100);
-	SKScene *scene    = nil;
-	scene    = [SKScene sceneWithSize:CGSizeMake(1024, 768)];
+	SKScene *scene    = [SKScene sceneWithSize:CGSizeMake(1024, 768)];
 	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
 	threeLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeCenter;
 	threeLineNode.position    = position;
