@@ -171,7 +171,7 @@ const CGFloat kDefaultFontSize    = 32.0;
 }
 
 
-- (void)setFontColor:(UIColor *)fontColor{
+- (void)setFontColor:(SKColor *)fontColor{
 	[super setFontColor: fontColor];
 	self.propertyStateholderNode.fontColor    = fontColor;
 	for (SKLabelNode *subNode in self.subNodes) {
@@ -181,7 +181,7 @@ const CGFloat kDefaultFontSize    = 32.0;
 }
 
 
-- (void)setColor:(UIColor *)color{
+- (void)setColor:(SKColor *)color{
 	[super setColor:color];
 	self.propertyStateholderNode.color = color;
 	for (SKLabelNode *subNode in self.subNodes) {
