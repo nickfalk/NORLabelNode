@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NORLabelNode.h"
+#import "TargetConditionals.h"
 
 @interface NORLabelNode ()
 @property (nonatomic, strong) NSArray *subNodes;
@@ -66,7 +67,13 @@
 	threeLineNode.verticalAlignmentMode    = SKLabelVerticalAlignmentModeTop;
 	threeLineNode.position    = CGPointMake(42, 0);
 	for (SKLabelNode *subNode in threeLineNode.subNodes) {
+#if TARGET_OS_PHONE
 		XCTAssertEqualObjects(threeLineNode.fontColor, subNode.fontColor, @"The subnodes should have the same fontColor as the parent.");
+#elif TARGET_OS_MAC
+		SKColor *parentColor    = [threeLineNode.fontColor colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
+		SKColor *subnodeColor    = [subNode.fontColor colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
+		XCTAssertEqualObjects(parentColor, subnodeColor, @"The subnodes should have the same fontColor as the parent.");
+#endif
 		XCTAssertEqualObjects(threeLineNode.fontName, subNode.fontName, @"The subnodes should have the same fontName as the parent.");
 		XCTAssertEqual(threeLineNode.fontSize, subNode.fontSize, @"The subnodes should have teh same fontSize as the parent.");
 		XCTAssertEqual(threeLineNode.horizontalAlignmentMode, subNode.horizontalAlignmentMode, @"The subnodes should have the same horizontalAligmentMode as the parent.");
