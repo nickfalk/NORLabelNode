@@ -10,6 +10,7 @@
 @implementation NORLabelNode
 
 const CGFloat kLineSpaceMultiplier    = 1.5;
+const CGFloat kDefaultFontSize    = 32.0;
 @synthesize text    = _text;
 @synthesize position    = _position;
 @synthesize fontColor    = _fontColor;
@@ -29,6 +30,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	if (self) {
 		[self setupStateholderNode];
 		self.lineSpacing    = kLineSpaceMultiplier;
+		self.fontSize    = kDefaultFontSize;
 	}
 	return self;
 }
@@ -39,6 +41,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	if (self) {
 		[self setupStateholderNode];
 		self.lineSpacing    = kLineSpaceMultiplier;
+		self.fontSize    = kDefaultFontSize;
 	}
 	return self;
 }
@@ -47,6 +50,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 - (void)setupStateholderNode{
 	self.propertyStateholderNode    = [SKLabelNode node];
 	self.propertyStateholderNode.fontName    = self.fontName;
+	self.propertyStateholderNode.fontSize    = self.fontSize;
 }
 
 
@@ -263,6 +267,7 @@ const CGFloat kLineSpaceMultiplier    = 1.5;
 	if (height < 0) {
 		height    *= -1;
 	}
+	
 	frame.size.height    = height;
 	return frame;
 }

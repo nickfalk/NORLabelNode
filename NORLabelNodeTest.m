@@ -75,7 +75,25 @@
 }
 
 
--(void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
+//- (void)testThatChangingLineSpacingHasEffectOnFrameHeight{
+//	SKScene *scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
+//	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
+//	[scene addChild:threeLineNode];
+//	
+//	CGFloat originalHeight    = CGRectGetHeight(threeLineNode.frame);
+//	threeLineNode.lineSpacing    = 3.0;
+//	CGFloat changedHeight    = CGRectGetHeight(threeLineNode.frame);
+//	XCTAssertNotEqual(originalHeight, changedHeight, @"The height of the frame should have changed after altering the linespacing");
+//}
+
+
+- (void) testThatDefaultFontSizeIsDefined{
+	NORLabelNode *newNode    = [NORLabelNode labelNodeWithFontNamed:@"Helvetica"];
+	XCTAssertNotEqual(0, newNode.fontSize, @"The fontsize should never be 0");
+}
+
+
+- (void)testThatVerticallyCenteredNodesCentersOnMiddleOfFrame{
 	CGPoint position    = CGPointMake(0, 100);
 	SKScene *scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
 	
@@ -100,7 +118,6 @@
 - (NORLabelNode *)nodeWithThreeSubNodes{
 	NORLabelNode *labelNode    = [[NORLabelNode alloc] init];
 	labelNode.text    = @"There was an old lady\nwho swallowed a fly\nI don't know why...";
-	
 	return labelNode;
 }
 
