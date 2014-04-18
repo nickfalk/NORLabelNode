@@ -75,17 +75,15 @@
 }
 
 
-- (void)testThatChangingLineSpacingHasEffectOnFrameHeight{
+- (void)testThatChangingLineSpacingHasEffect{
 	SKScene *scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
 	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
 	[scene addChild:threeLineNode];
-	SKLabelNode *node = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-	node.text = @"blabla";
-	
-	CGFloat originalHeight    = CGRectGetHeight(threeLineNode.frame);
+	SKLabelNode *lastNode    = [threeLineNode.subNodes lastObject];
+	CGFloat originalPosition    =  lastNode.position.y;
 	threeLineNode.lineSpacing    = 3.0;
-	CGFloat changedHeight    = CGRectGetHeight(threeLineNode.frame);
-	XCTAssertNotEqual(originalHeight, changedHeight, @"The height of the frame should have changed after altering the linespacing");
+	CGFloat changedPosition    = lastNode.position.y;
+	XCTAssertNotEqual(originalPosition, changedPosition, @"The position of the node should have changed after altering the linespacing");
 }
 
 
