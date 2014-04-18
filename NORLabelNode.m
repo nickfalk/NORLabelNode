@@ -28,9 +28,9 @@ const CGFloat kDefaultFontSize    = 32.0;
 - (instancetype)initWithFontNamed:(NSString *)fontName{
 	self    = [super initWithFontNamed:fontName];
 	if (self) {
-		[self setupStateholderNode];
 		self.lineSpacing    = kLineSpaceMultiplier;
 		self.fontSize    = kDefaultFontSize;
+		[self setupStateholderNode];
 	}
 	return self;
 }
@@ -39,9 +39,9 @@ const CGFloat kDefaultFontSize    = 32.0;
 - (instancetype)init{
 	self    = [super init];
 	if (self) {
-		[self setupStateholderNode];
 		self.lineSpacing    = kLineSpaceMultiplier;
 		self.fontSize    = kDefaultFontSize;
+		[self setupStateholderNode];
 	}
 	return self;
 }
@@ -50,7 +50,6 @@ const CGFloat kDefaultFontSize    = 32.0;
 - (void)setupStateholderNode{
 	self.propertyStateholderNode    = [SKLabelNode node];
 	self.propertyStateholderNode.fontName    = self.fontName;
-	self.propertyStateholderNode.fontSize    = self.fontSize;
 }
 
 
