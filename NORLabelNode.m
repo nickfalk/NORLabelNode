@@ -259,6 +259,7 @@ const CGFloat kDefaultFontSize    = 32.0;
     return self.propertyStateholderNode.position;
 }
 
+
 #pragma mark - description
 
 - (NSString *)description{
