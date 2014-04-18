@@ -266,7 +266,13 @@ const CGFloat kDefaultFontSize    = 32.0;
 #pragma mark - description
 
 - (NSString *)description{
-	NSString *positionString    = [NSString stringWithFormat:@"%@", NSStringFromCGPoint(self.position)];
+	NSString *positionString    = nil;
+#if TARGET_OS_IPHONE
+	positionString    = [NSString stringWithFormat:@"%@", NSStringFromCGPoint(self.position)];
+#elif TARGET_OS_MAC
+	NSPoint position    = self.position;
+	positionString    = [NSString stringWithFormat:@"%@", NSStringFromPoint(position)];
+#endif
 	NSString *descriptionString    = [NSString stringWithFormat:@"<%@> name:'%@' text:'%@' fontName:'%@' position:%@", [self class], self.name, self.propertyStateholderNode.text, self.fontName, positionString];
 	return descriptionString;
 }
