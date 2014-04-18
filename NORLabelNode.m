@@ -151,7 +151,6 @@ const CGFloat kDefaultFontSize    = 32.0;
 
 
 - (void)setFontSize:(CGFloat)fontSize{
-//	[super setFontSize:fontSize];
 	self.propertyStateholderNode.fontSize    = fontSize;
 	_fontSize    = fontSize;
 	for (SKLabelNode *subNode in self.subNodes) {
@@ -172,7 +171,6 @@ const CGFloat kDefaultFontSize    = 32.0;
 
 
 - (void)setFontColor:(SKColor *)fontColor{
-//	[super setFontColor: fontColor];
 	self.propertyStateholderNode.fontColor    = fontColor;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.fontColor    = fontColor;
@@ -182,7 +180,6 @@ const CGFloat kDefaultFontSize    = 32.0;
 
 
 - (void)setColor:(SKColor *)color{
-//	[super setColor:color];
 	self.propertyStateholderNode.color = color;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.color    = color;
@@ -202,7 +199,6 @@ const CGFloat kDefaultFontSize    = 32.0;
 
 
 - (void)setBlendMode:(SKBlendMode)blendMode{
-//	[super setBlendMode:blendMode];
 	self.propertyStateholderNode.blendMode    = blendMode;
 	for (SKLabelNode *subNode in self.subNodes) {
 		subNode.blendMode    = blendMode;
