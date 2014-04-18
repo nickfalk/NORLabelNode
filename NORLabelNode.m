@@ -247,31 +247,6 @@ const CGFloat kDefaultFontSize    = 32.0;
 }
 
 
-#pragma mark - frame
-
-- (CGRect)frame{
-	CGFloat largestWidth    = 0;
-	for (SKLabelNode *childNode in self.subNodes) {
-		if (childNode.frame.size.width > largestWidth) {
-			largestWidth    = childNode.frame.size.width;
-		}
-	}
-	CGRect frame    = self.propertyStateholderNode.frame;
-	frame.size.width    = largestWidth;
-	SKLabelNode *topNode    = [self.subNodes firstObject];
-	CGFloat top    = CGRectGetMaxY(topNode.frame);
-	SKLabelNode *bottomNode    = [self.subNodes lastObject];
-	CGFloat bottom    = CGRectGetMinY(bottomNode.frame);
-	CGFloat height    = bottom - top;
-	if (height < 0) {
-		height    *= -1;
-	}
-	
-	frame.size.height    = height;
-	return frame;
-}
-
-
 #pragma mark - property getters
 
 -(NSUInteger)numberOfLines{

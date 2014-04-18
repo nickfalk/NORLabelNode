@@ -75,16 +75,18 @@
 }
 
 
-//- (void)testThatChangingLineSpacingHasEffectOnFrameHeight{
-//	SKScene *scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
-//	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
-//	[scene addChild:threeLineNode];
-//	
-//	CGFloat originalHeight    = CGRectGetHeight(threeLineNode.frame);
-//	threeLineNode.lineSpacing    = 3.0;
-//	CGFloat changedHeight    = CGRectGetHeight(threeLineNode.frame);
-//	XCTAssertNotEqual(originalHeight, changedHeight, @"The height of the frame should have changed after altering the linespacing");
-//}
+- (void)testThatChangingLineSpacingHasEffectOnFrameHeight{
+	SKScene *scene    = [SKScene sceneWithSize:[UIApplication sharedApplication].keyWindow.frame.size];
+	NORLabelNode *threeLineNode    = [self nodeWithThreeSubNodes];
+	[scene addChild:threeLineNode];
+	SKLabelNode *node = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+	node.text = @"blabla";
+	
+	CGFloat originalHeight    = CGRectGetHeight(threeLineNode.frame);
+	threeLineNode.lineSpacing    = 3.0;
+	CGFloat changedHeight    = CGRectGetHeight(threeLineNode.frame);
+	XCTAssertNotEqual(originalHeight, changedHeight, @"The height of the frame should have changed after altering the linespacing");
+}
 
 
 - (void) testThatDefaultFontSizeIsDefined{
